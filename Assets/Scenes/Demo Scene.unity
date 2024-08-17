@@ -3544,11 +3544,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3054942120714206837, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
       propertyPath: m_Size.x
-      value: 3.6624167
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3054942120714206837, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
       propertyPath: m_Size.y
-      value: 1.6675165
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3054942120714206837, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
       propertyPath: m_DrawMode
@@ -3571,6 +3571,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7323506086213456758, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
+      propertyPath: minSide
+      value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323506086213456758, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
       propertyPath: maxHeight
       value: 6
       objectReference: {fileID: 0}
@@ -3583,7 +3587,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 894dfe33661263b42a8e1490d64c0424, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3054942121443606492, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
@@ -16528,9 +16533,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 0
-      minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.80784315}
+      minMaxState: 2
+      minColor: {r: 0.9811321, g: 0.34434545, b: 0, a: 1}
+      maxColor: {r: 0.9622642, g: 0.68255585, b: 0, a: 0.80784315}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -21722,7 +21727,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 0}
+  m_BackGroundColor: {r: 0.3490566, g: 0, b: 0.006258263, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -23785,7 +23790,7 @@ Transform:
   m_GameObject: {fileID: 2119192187}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12, y: 12, z: 0}
+  m_LocalPosition: {x: -12, y: 44.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23901,7 +23906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb0b0c5011c99a04c932f8aa4250cc38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _teleportPosition: {x: 1.27, y: 34.23}
+  _teleportPosition: {x: 1.53, y: 50.5}
   _teleportOutClip: {fileID: 8300000, guid: 3561af2d278c31f4eb17ec278c2b8de8, type: 3}
   _teleportInClip: {fileID: 8300000, guid: 2383091dc0a3a764a8c78b106fab766c, type: 3}
   _teleportParticlePrefab: {fileID: 313061834581851932, guid: fae34a622ae77c14a8df46c130f85019, type: 3}
@@ -24225,7 +24230,7 @@ Transform:
   m_GameObject: {fileID: 9144631360735095630}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.559746, y: 19.60044, z: 0}
+  m_LocalPosition: {x: -6.559746, y: 55.26, z: 0}
   m_LocalScale: {x: 5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

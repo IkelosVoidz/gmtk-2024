@@ -8,23 +8,25 @@ namespace TarodevController{
     public class PlayerSquishSquash : MonoBehaviour
     {
 
+        
+
+
         [field: SerializeField] public PlayerStats Stats { get; private set; }
 
         public static event Action OnSquashFinished;
         public static event Action OnSquishFinished;
 
+        public ReshapeType _reshapeType = ReshapeType.IDLE;
+
+       
         [SerializeField]
         private float maxSide = 8;
         [SerializeField]
-        private float minSide = 1f;
+        private float minSide = 1f - 0.1f;
 
-
-
-        
         private void OnEnable() {
             PlayerController.OnSquish += CalculateSquish;
             PlayerController.OnSquash += CalculateSquash;
-
         }
 
         private void OnDisable() {
@@ -56,12 +58,21 @@ namespace TarodevController{
             float newWidth = currentWidth +0.2f;
             float newHeight = currentHeight - 0.2f;
 
+            Debug.Log(newHeight + " " + newWidth + "maxSide : " + maxSide);
             if(newHeight < minSide && newWidth > maxSide) return;
 
-            if(newWidth < maxSide) Stats.CharacterSize.SetHeight(newHeight);
-            if(newHeight > minSide) Stats.CharacterSize.SetWidth(newWidth);
+            if(newWidth < maxSide) Stats.CharacterSize.SetWidth(newWidth);
+            if(newHeight > minSide) Stats.CharacterSize.SetHeight(newHeight);
 
             OnSquishFinished?.Invoke();
         }
     }
+}
+
+public enum ReshapeType {
+    SQUISH,
+    SQUISH_RETURN,
+    SQUASH,
+    SQUASH_RETURN,
+    IDLE,
 }

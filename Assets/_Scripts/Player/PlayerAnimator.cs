@@ -15,9 +15,7 @@ namespace TarodevController
         private Animator _anim;
 
         [SerializeField] private GameObject _effectsParent;
-        [SerializeField] private Transform _trailRenderer;
         [SerializeField] private SpriteRenderer _sprite;
-        [SerializeField] private TrailRenderer _trail;
         
 
         [Header("Particles")] [SerializeField] private ParticleSystem _jumpParticles;
@@ -43,8 +41,7 @@ namespace TarodevController
         private IPlayerController _player;
         private Vector2 _currentSpriteSize;
         private GeneratedCharacterSize _character;
-        private Vector3 _trailOffset;
-        private Vector2 _trailVel;
+
 
         private void Awake()
         {
@@ -53,9 +50,7 @@ namespace TarodevController
            
             HandleSquishSquashVisuals();
 
-            _trailOffset = _trailRenderer.localPosition;
-            _trailRenderer.SetParent(null);
-            _originalTrailTime = _trail.time;
+           
         }
 
         public void OnValidate() {
@@ -69,7 +64,6 @@ namespace TarodevController
             _player.GroundedChanged += OnGroundedChanged;
             _player.DashChanged += OnDashChanged;
             _player.WallGrabChanged += OnWallGrabChanged;
-            _player.Repositioned += PlayerOnRepositioned;
             _player.ToggledPlayer += PlayerOnToggledPlayer;
             PlayerSquishSquash.OnSquashFinished +=  HandleSquishSquashVisuals;
             PlayerSquishSquash.OnSquishFinished +=  HandleSquishSquashVisuals;
@@ -84,7 +78,6 @@ namespace TarodevController
             _player.GroundedChanged -= OnGroundedChanged;
             _player.DashChanged -= OnDashChanged;
             _player.WallGrabChanged -= OnWallGrabChanged;
-            _player.Repositioned -= PlayerOnRepositioned;
             _player.ToggledPlayer -= PlayerOnToggledPlayer;
 
             _moveParticles.Stop();
@@ -113,7 +106,7 @@ namespace TarodevController
 
         private void LateUpdate()
         {
-            _trailRenderer.position = Vector2.SmoothDamp(_trailRenderer.position, transform.position + _trailOffset, ref _trailVel, 0.02f);
+           
         }
 
         #region Squish
@@ -401,19 +394,9 @@ namespace TarodevController
 
         #endregion
 
-        private float _originalTrailTime;
-        private void PlayerOnRepositioned(Vector2 newPosition)
-        {
-            StartCoroutine(ResetTrail());
-            
-            IEnumerator ResetTrail()
-            {
-                _trail.time = 0;
-                yield return new WaitForSeconds(0.1f);
-                _trail.time = _originalTrailTime;
-            }
-        }
-        
+
+       
+
         private void PlayerOnToggledPlayer(bool on)
         {
             _effectsParent.SetActive(on);

@@ -19704,9 +19704,7 @@ MonoBehaviour:
   <Stats>k__BackingField: {fileID: 11400000, guid: 894dfe33661263b42a8e1490d64c0424, type: 2}
   _anim: {fileID: 3054942120714206838}
   _effectsParent: {fileID: 4279591914954755471}
-  _trailRenderer: {fileID: 3054942121443606467}
   _sprite: {fileID: 3054942120714206837}
-  _trail: {fileID: 3054942121443606466}
   _jumpParticles: {fileID: 3054942119893454503}
   _launchParticles: {fileID: 3054942121060292280}
   _moveParticles: {fileID: 3054942119837435221}
@@ -19921,6 +19919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Stats>k__BackingField: {fileID: 0}
+  _reshapeType: 4
   maxSide: 8
   minSide: 1
 --- !u!50 &3054942120541986088
@@ -19993,7 +19992,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.8999977, y: 0.39999983}
+  m_Size: {x: 7.8999968, y: 0.39999983}
   m_EdgeRadius: 0.05
 --- !u!70 &5731089695359280883
 CapsuleCollider2D:
@@ -20028,7 +20027,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.4999999}
-  m_Size: {x: 6.9599977, y: 0.9599998}
+  m_Size: {x: 7.9599967, y: 0.9599998}
   m_Direction: 1
 --- !u!1 &3054942120628204824
 GameObject:
@@ -20142,12 +20141,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9ec0ca269ec0b4f4fa12877c83d9dd88, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b86c74560d4175843a8bce286a4d0f89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 5.262077, y: 0.80511636}
+  m_Size: {x: 6.6343517, y: 1.2263899}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
