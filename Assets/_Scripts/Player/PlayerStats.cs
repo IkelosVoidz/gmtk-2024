@@ -15,7 +15,6 @@ namespace TarodevController
         public CharacterSize CharacterSize;
 
         private void OnEnable() {
-            Debug.Log("enable");
             CharacterSize.Reset();  
             OnValidate();          
         }
@@ -139,9 +138,9 @@ namespace TarodevController
         public void Reset(){  
             Height = DefaultHeight;
             Width = DefaultWidth;
-            StepHeight = 0.5f;
-            CrouchHeight = 0.6f;
-            RayInset = 0.1f;  
+            StepHeight = 0.6f;
+            CrouchHeight = 0.8f;
+            RayInset = 0.01f;  
         }
 
         public GeneratedCharacterSize GenerateCharacterSize()

@@ -18,7 +18,9 @@ namespace TarodevController
 
         public static event Action OnSquish;
         public static event Action OnSquash;
-       
+
+        public static event Action OnResetShape;
+
 
         #endregion
 
@@ -95,13 +97,11 @@ namespace TarodevController
         }
 
         private void OnEnable() {
-            PlayerSquishSquash.OnSquashFinished += SetupCharacter;
-            PlayerSquishSquash.OnSquishFinished += SetupCharacter;
+            PlayerSquishSquash.OnSquishOrSquashFinished += SetupCharacter;
         }
 
         private void OnDisable() {
-            PlayerSquishSquash.OnSquashFinished -= SetupCharacter;
-            PlayerSquishSquash.OnSquishFinished -= SetupCharacter;
+            PlayerSquishSquash.OnSquishOrSquashFinished -= SetupCharacter;
         }
         
         private void OnDestroy() => PhysicsSimulator.Instance.RemovePlayer(this);
@@ -147,10 +147,14 @@ namespace TarodevController
 
         private void HandleSquishSquash()
         {
-           if( _frameInput.SquishDown || _frameInput.SquishHeld) OnSquish?.Invoke();
-           if( _frameInput.SquashDown || _frameInput.SquashHeld) OnSquash?.Invoke();
+           if( !(_frameInput.SquishDown || _frameInput.SquishHeld)  && !( _frameInput.SquashDown || _frameInput.SquashHeld)){
+                OnResetShape?.Invoke();
+           }
+           if( (_frameInput.SquishDown || _frameInput.SquishHeld) &&  !( _frameInput.SquashDown || _frameInput.SquashHeld)) OnSquish?.Invoke();
+           else if( (_frameInput.SquashDown || _frameInput.SquashHeld) && !(_frameInput.SquishDown || _frameInput.SquishHeld)) OnSquash?.Invoke();
         }
 
+       
         
 
         #endregion

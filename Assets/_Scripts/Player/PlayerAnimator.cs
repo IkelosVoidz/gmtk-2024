@@ -16,6 +16,10 @@ namespace TarodevController
 
         [SerializeField] private GameObject _effectsParent;
         [SerializeField] private SpriteRenderer _sprite;
+
+        [SerializeField] private float extraDetailsHeight = 0.15f;
+        [SerializeField] private float extraDetailsWidth = 0.15f;
+
         
 
         [Header("Particles")] [SerializeField] private ParticleSystem _jumpParticles;
@@ -65,8 +69,7 @@ namespace TarodevController
             _player.DashChanged += OnDashChanged;
             _player.WallGrabChanged += OnWallGrabChanged;
             _player.ToggledPlayer += PlayerOnToggledPlayer;
-            PlayerSquishSquash.OnSquashFinished +=  HandleSquishSquashVisuals;
-            PlayerSquishSquash.OnSquishFinished +=  HandleSquishSquashVisuals;
+            PlayerSquishSquash.OnSquishOrSquashFinished +=  HandleSquishSquashVisuals;
 
 
             _moveParticles.Play();
@@ -311,16 +314,17 @@ namespace TarodevController
 
             if (!_isSquishing)
             {
-                var percentage = _character.CrouchingHeight / _character.Height;
-                _sprite.size = Vector2.SmoothDamp(_sprite.size, new Vector2(_character.Width, _crouching ? _character.Height * percentage : _character.Height), ref _currentCrouchSizeVelocity, 0.03f);
+                var percentage = _character.CrouchingHeight / _character.Height+extraDetailsHeight;
+                _sprite.size = Vector2.SmoothDamp(_sprite.size, new Vector2(_character.Width+extraDetailsWidth, _crouching ?( _character.Height+extraDetailsHeight) * percentage : (_character.Height + extraDetailsHeight)), ref _currentCrouchSizeVelocity, 0.03f);
             }
         }
 
         private void HandleSquishSquashVisuals()
         {
             _character = Stats.CharacterSize.GenerateCharacterSize();
-            _currentSpriteSize = new Vector2(_character.Width, _character.Height);
-            _sprite.size = Vector2.SmoothDamp(_sprite.size, new Vector2(_character.Width, _character.Height), ref _currentCrouchSizeVelocity, 0.03f);
+            _currentSpriteSize = new Vector2(_character.Width+extraDetailsWidth, _character.Height + extraDetailsHeight);
+            _sprite.transform.position.Set(transform.position.x - (extraDetailsWidth/2) , transform.position.y , transform.position.z);
+            _sprite.size = Vector2.SmoothDamp(_sprite.size, new Vector2(_character.Width +extraDetailsWidth, _character.Height+extraDetailsHeight), ref _currentCrouchSizeVelocity, 0.03f);
         }   
 
         #endregion
