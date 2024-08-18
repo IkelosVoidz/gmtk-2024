@@ -19924,6 +19924,7 @@ MonoBehaviour:
   _reshapeType: 4
   maxSide: 8
   minSide: 1
+  _sideClearance: 0.1
   reshapeSpeed: 0.1
   longSideSpeedMultiplier: 3
   thinSideSpeedDivider: 0.3

@@ -972,6 +972,17 @@ namespace TarodevController
 
             Gizmos.color = Color.black;
             Gizmos.DrawRay(RayPoint, Vector3.right);
+
+            Gizmos.color = Color.blue;
+            float sideClearance = .1f;
+
+            Gizmos.DrawWireCube(_rb.position + new Vector2(0 , _character.Height + (sideClearance/2)) , new Vector2(_character.Width-sideClearance , sideClearance));
+            Gizmos.DrawWireCube(_rb.position - new Vector2(0 , sideClearance/2) , new Vector2(_character.Width-sideClearance , sideClearance));
+            Gizmos.DrawWireCube(_rb.position + new Vector2(-(_character.Width/2) - (sideClearance/2)  , _character.Height/2 ) , new Vector2(sideClearance , _character.Height-sideClearance));
+            Gizmos.DrawWireCube(_rb.position + new Vector2((_character.Width/2) + (sideClearance/2)  , _character.Height/2 ) , new Vector2(sideClearance , _character.Height-sideClearance));
+
+
+
         }
 
         #endregion

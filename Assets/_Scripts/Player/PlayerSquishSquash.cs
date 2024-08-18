@@ -22,11 +22,19 @@ namespace TarodevController{
         [SerializeField]
         private float minSide = 1f - 0.1f;
 
+        [SerializeField]
+        private float _sideClearance = .1f;
+
         [SerializeField] private float reshapeSpeed = .1f;
         [SerializeField] private float longSideSpeedMultiplier = 3;
         [SerializeField] private float thinSideSpeedDivider = .3f;
 
 
+        private Rigidbody2D _rb;
+
+        private void Awake() {
+             _rb = GetComponent<Rigidbody2D>();
+        }
 
         private void OnEnable() {
             PlayerController.OnSquish += HandleSquishInput;
@@ -129,8 +137,10 @@ namespace TarodevController{
                     if (newWidth <= defaultWidth) newWidth = defaultWidth;
                 }
                
+                if(CanExpandHorizontally(newWidth , newHeight)){
+                    Stats.CharacterSize.SetWidth(newWidth);
+                }
             
-                Stats.CharacterSize.SetWidth(newWidth);
             }
 
             if (currentHeight != defaultHeight)
@@ -144,7 +154,9 @@ namespace TarodevController{
                     if (newHeight >= defaultHeight) newHeight = defaultHeight;
                 }
 
-                Stats.CharacterSize.SetHeight(newHeight);
+                if(CanExpandVertically(newWidth , newHeight)){
+                    Stats.CharacterSize.SetHeight(newHeight);
+                } 
             }
 
             if (newWidth == defaultWidth && newHeight == defaultHeight)
@@ -166,6 +178,8 @@ namespace TarodevController{
             float newWidth = currentWidth -(reshapeSpeed * thinSideSpeedDivider);
             float newHeight = currentHeight + (reshapeSpeed * longSideSpeedMultiplier);
 
+            if(!CanExpandVertically(newWidth ,newHeight)) return;
+
             if(newHeight == maxSide && newWidth == minSide) return;
 
             if(newHeight < maxSide) Stats.CharacterSize.SetHeight(newHeight);
@@ -186,6 +200,9 @@ namespace TarodevController{
             float newWidth = currentWidth +(reshapeSpeed * longSideSpeedMultiplier);
             float newHeight = currentHeight - (reshapeSpeed * thinSideSpeedDivider);
 
+            if(!CanExpandHorizontally(newWidth ,newHeight)) return;
+
+
             if(newHeight == minSide && newWidth == maxSide) return;
 
             if(newWidth < maxSide) Stats.CharacterSize.SetWidth(newWidth);
@@ -198,6 +215,26 @@ namespace TarodevController{
 
             OnSquishOrSquashFinished?.Invoke();
         }
+
+        private bool CanExpandHorizontally(float width , float height) {
+            
+            
+            Physics2D.queriesHitTriggers = false;
+            var hitL = Physics2D.OverlapBox(_rb.position + new Vector2(-(width/2) - (_sideClearance/2), height/2 ) , new Vector2(_sideClearance , height - _sideClearance), 0, Stats.CollisionLayers);
+            var hitR = Physics2D.OverlapBox(_rb.position + new Vector2((width/2) + (_sideClearance/2) , height/2 ) , new Vector2(_sideClearance , height - _sideClearance), 0, Stats.CollisionLayers);
+            
+            return !(hitL && hitR);
+        }
+
+        private bool CanExpandVertically(float width , float height) {
+           
+            Physics2D.queriesHitTriggers = false;
+
+            var hitT = Physics2D.OverlapBox(_rb.position + new Vector2(0 , height + (_sideClearance/2)) , new Vector2(width - _sideClearance, _sideClearance), 0, Stats.CollisionLayers);
+            var hitB = Physics2D.OverlapBox(_rb.position - new Vector2(0 , _sideClearance/2) , new Vector2(width - _sideClearance , _sideClearance), 0, Stats.CollisionLayers);
+
+            return !(hitT && hitB);
+        } 
     }
 }
 
