@@ -131,16 +131,18 @@ namespace TarodevController{
                 newWidth = currentWidth + widthAdjustment;
 
                 if(returnType == ReshapeType.SQUISH_RETURN) {
-                     if (newWidth >= defaultWidth) newWidth = defaultWidth;
+                    if (newWidth >= defaultWidth) newWidth = defaultWidth;
+
+                    if(CanExpandHorizontally(newWidth , newHeight)){
+                        Stats.CharacterSize.SetWidth(newWidth);
+                    }
                 }
                 else{ //squash return 
                     if (newWidth <= defaultWidth) newWidth = defaultWidth;
-                }
-               
-                if(CanExpandHorizontally(newWidth , newHeight)){
                     Stats.CharacterSize.SetWidth(newWidth);
                 }
-            
+               
+               
             }
 
             if (currentHeight != defaultHeight)
@@ -148,15 +150,17 @@ namespace TarodevController{
                 newHeight = currentHeight + heightAdjustment;
 
                 if(returnType == ReshapeType.SQUISH_RETURN) {
-                     if (newHeight <= defaultHeight) newHeight = defaultHeight;
+                    if (newHeight <= defaultHeight) newHeight = defaultHeight;
+
+                    Stats.CharacterSize.SetHeight(newHeight);
                 }
                 else{ //squash return 
                     if (newHeight >= defaultHeight) newHeight = defaultHeight;
-                }
 
-                if(CanExpandVertically(newWidth , newHeight)){
-                    Stats.CharacterSize.SetHeight(newHeight);
-                } 
+                    if(CanExpandVertically(newWidth , newHeight)){
+                        Stats.CharacterSize.SetHeight(newHeight);
+                    } 
+                }   
             }
 
             if (newWidth == defaultWidth && newHeight == defaultHeight)
@@ -178,14 +182,15 @@ namespace TarodevController{
             float newWidth = currentWidth -(reshapeSpeed * thinSideSpeedDivider);
             float newHeight = currentHeight + (reshapeSpeed * longSideSpeedMultiplier);
 
-            if(!CanExpandVertically(newWidth ,newHeight)) return;
-
             if(newHeight == maxSide && newWidth == minSide) return;
-
-            if(newHeight < maxSide) Stats.CharacterSize.SetHeight(newHeight);
-            else  {
-                Stats.CharacterSize.SetHeight(maxSide);
+            
+            if(CanExpandVertically(newWidth ,newHeight)){
+                if(newHeight < maxSide) Stats.CharacterSize.SetHeight(newHeight);
+                else  {
+                    Stats.CharacterSize.SetHeight(maxSide);
+                }
             }
+
             if(newWidth > minSide) Stats.CharacterSize.SetWidth(newWidth);
             else Stats.CharacterSize.SetWidth(minSide);
 
@@ -200,15 +205,16 @@ namespace TarodevController{
             float newWidth = currentWidth +(reshapeSpeed * longSideSpeedMultiplier);
             float newHeight = currentHeight - (reshapeSpeed * thinSideSpeedDivider);
 
-            if(!CanExpandHorizontally(newWidth ,newHeight)) return;
-
-
             if(newHeight == minSide && newWidth == maxSide) return;
+            if(CanExpandHorizontally(newWidth ,newHeight)){
 
-            if(newWidth < maxSide) Stats.CharacterSize.SetWidth(newWidth);
-            else{ 
-                Stats.CharacterSize.SetWidth(maxSide);
+                if(newWidth < maxSide) Stats.CharacterSize.SetWidth(newWidth);
+                else{ 
+                    Stats.CharacterSize.SetWidth(maxSide);
+                }
+
             }
+
 
             if(newHeight > minSide) Stats.CharacterSize.SetHeight(newHeight);
             else Stats.CharacterSize.SetHeight(minSide);
