@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -262,7 +263,14 @@ namespace TarodevController
 
         private void HandleSpriteFlip(float xInput)
         {
-            if (_player.MoveInput.x != 0) _sprite.flipX = xInput < 0;
+            if (_player.MoveInput.x != 0){
+                bool bufferFlipX = _sprite.flipX;
+                _sprite.flipX = xInput < 0;
+
+                if(bufferFlipX != _sprite.flipX) {
+                     _sprite.transform.localPosition *=-1;
+                }
+            } 
         }
 
         #endregion
@@ -323,7 +331,7 @@ namespace TarodevController
         {
             _character = Stats.CharacterSize.GenerateCharacterSize();
             _currentSpriteSize = new Vector2(_character.Width+extraDetailsWidth, _character.Height + extraDetailsHeight);
-            _sprite.transform.position.Set(transform.position.x - (extraDetailsWidth/2) , transform.position.y , transform.position.z);
+            _sprite.transform.localPosition.Set(0 + (_sprite.flipX ? (extraDetailsWidth/2) : (-extraDetailsWidth/2))  , 0 ,0);
             _sprite.size = Vector2.SmoothDamp(_sprite.size, new Vector2(_character.Width +extraDetailsWidth, _character.Height+extraDetailsHeight), ref _currentCrouchSizeVelocity, 0.03f);
         }   
 

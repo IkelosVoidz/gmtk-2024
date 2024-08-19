@@ -22,8 +22,8 @@ MonoBehaviour:
     DefaultWidth: 1.99
     DefaultHeight: 1.99
     Height: 1.99
-    Width: 1.99
-    StepHeight: 0.6
+    Width: 1.7900002
+    StepHeight: 0.3
     CrouchHeight: 0.8
     RayInset: 0.01
   VerticalDeadZoneThreshold: 0.3
@@ -49,7 +49,7 @@ MonoBehaviour:
   AllowCrouching: 0
   CrouchSlowDownTime: 1
   CrouchSpeedModifier: 0.3
-  AllowWalls: 1
+  AllowWalls: 0
   ClimbableLayer:
     serializedVersion: 2
     m_Bits: 256

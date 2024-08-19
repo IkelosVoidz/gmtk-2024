@@ -138,7 +138,7 @@ namespace TarodevController
         public void Reset(){  
             Height = DefaultHeight;
             Width = DefaultWidth;
-            StepHeight = 0.6f;
+            StepHeight = 0.3f;
             CrouchHeight = 0.8f;
             RayInset = 0.01f;  
         }
@@ -157,7 +157,7 @@ namespace TarodevController
                 RayInset = RayInset
             };
 
-            s.StandingColliderSize = new Vector2(s.Width - COLLIDER_EDGE_RADIUS * 2, s.Height - s.StepHeight - COLLIDER_EDGE_RADIUS * 2);
+            s.StandingColliderSize = new Vector2(s.Width - (COLLIDER_EDGE_RADIUS*2) - 0.02f , s.Height - s.StepHeight - (COLLIDER_EDGE_RADIUS * 2)  - 0.02f);
             s.StandingColliderCenter = new Vector2(0, s.Height - s.StandingColliderSize.y / 2 - COLLIDER_EDGE_RADIUS);
             
             s.CrouchingHeight = CrouchHeight;

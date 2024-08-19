@@ -19705,8 +19705,8 @@ MonoBehaviour:
   _anim: {fileID: 3054942120714206838}
   _effectsParent: {fileID: 4279591914954755471}
   _sprite: {fileID: 3054942120714206837}
-  extraDetailsHeight: 0.15
-  extraDetailsWidth: 0.15
+  extraDetailsHeight: 0.11
+  extraDetailsWidth: 0.14
   _jumpParticles: {fileID: 3054942119893454503}
   _launchParticles: {fileID: 3054942121060292280}
   _moveParticles: {fileID: 3054942119837435221}
@@ -19920,14 +19920,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9bd4b9d6b9e09241910e884db693f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Stats>k__BackingField: {fileID: 0}
+  <Stats>k__BackingField: {fileID: 11400000, guid: 894dfe33661263b42a8e1490d64c0424, type: 2}
   _reshapeType: 4
-  maxSide: 8
-  minSide: 1
+  maxSide: 7.99
+  minSide: 0.99
   _sideClearance: 0.1
   reshapeSpeed: 0.1
-  longSideSpeedMultiplier: 3
-  thinSideSpeedDivider: 0.3
+  longSideSpeedMultiplier: 4
+  thinSideSpeedDivider: 2
 --- !u!50 &3054942120541986088
 Rigidbody2D:
   serializedVersion: 4
@@ -19987,7 +19987,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.2950001}
+  m_Offset: {x: 0, y: 1.155}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -19998,7 +19998,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.89, y: 1.29}
+  m_Size: {x: 1.87, y: 1.57}
   m_EdgeRadius: 0.05
 --- !u!70 &5731089695359280883
 CapsuleCollider2D:
@@ -20100,7 +20100,7 @@ Transform:
   m_GameObject: {fileID: 3054942120714206832}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.07, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20152,7 +20152,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 2.14, y: 2.14}
+  m_Size: {x: 2.1299868, y: 2.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

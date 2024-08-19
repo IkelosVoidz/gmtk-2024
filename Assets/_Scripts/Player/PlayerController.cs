@@ -337,6 +337,7 @@ namespace TarodevController
         private void ToggleGrounded(bool grounded)
         {
             _grounded = grounded;
+            Debug.Log("grounded" + grounded);
             if (grounded)
             {
                 GroundedChanged?.Invoke(true, _lastFrameY);
@@ -955,31 +956,31 @@ namespace TarodevController
 
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(pos + Vector2.up * _character.Height / 2, new Vector3(_character.Width, _character.Height));
-            Gizmos.color = Color.magenta;
+            // Gizmos.color = Color.magenta;
 
-            var rayStart = pos + Vector2.up * _character.StepHeight;
-            var rayDir = Vector3.down * _character.StepHeight;
-            Gizmos.DrawRay(rayStart, rayDir);
-            foreach (var offset in GenerateRayOffsets())
-            {
-                Gizmos.DrawRay(rayStart + Vector2.right * offset, rayDir);
-                Gizmos.DrawRay(rayStart + Vector2.left * offset, rayDir);
-            }
+            // var rayStart = pos + Vector2.up * _character.StepHeight;
+            // var rayDir = Vector3.down * _character.StepHeight;
+            // Gizmos.DrawRay(rayStart, rayDir);
+            // foreach (var offset in GenerateRayOffsets())
+            // {
+            //     Gizmos.DrawRay(rayStart + Vector2.right * offset, rayDir);
+            //     Gizmos.DrawRay(rayStart + Vector2.left * offset, rayDir);
+            // }
 
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(pos + (Vector2)_wallDetectionBounds.center, _wallDetectionBounds.size);
+            // Gizmos.color = Color.yellow;
+            // Gizmos.DrawWireCube(pos + (Vector2)_wallDetectionBounds.center, _wallDetectionBounds.size);
 
 
-            Gizmos.color = Color.black;
-            Gizmos.DrawRay(RayPoint, Vector3.right);
+            // Gizmos.color = Color.black;
+            // Gizmos.DrawRay(RayPoint, Vector3.right);
 
-            Gizmos.color = Color.blue;
-            float sideClearance = .1f;
+            // Gizmos.color = Color.blue;
+            // float sideClearance = .1f;
 
-            Gizmos.DrawWireCube(_rb.position + new Vector2(0 , _character.Height + (sideClearance/2)) , new Vector2(_character.Width-sideClearance , sideClearance));
-            Gizmos.DrawWireCube(_rb.position - new Vector2(0 , sideClearance/2) , new Vector2(_character.Width-sideClearance , sideClearance));
-            Gizmos.DrawWireCube(_rb.position + new Vector2(-(_character.Width/2) - (sideClearance/2)  , _character.Height/2 ) , new Vector2(sideClearance , _character.Height-sideClearance));
-            Gizmos.DrawWireCube(_rb.position + new Vector2((_character.Width/2) + (sideClearance/2)  , _character.Height/2 ) , new Vector2(sideClearance , _character.Height-sideClearance));
+            // Gizmos.DrawWireCube(_rb.position + new Vector2(0 , _character.Height + (sideClearance/2)) , new Vector2(_character.Width-sideClearance , sideClearance));
+            // Gizmos.DrawWireCube(_rb.position - new Vector2(0 , sideClearance/2) , new Vector2(_character.Width-sideClearance , sideClearance));
+            // Gizmos.DrawWireCube(_rb.position + new Vector2(-(_character.Width/2) - (sideClearance/2)  , _character.Height/2 ) , new Vector2(sideClearance , _character.Height-sideClearance));
+            // Gizmos.DrawWireCube(_rb.position + new Vector2((_character.Width/2) + (sideClearance/2)  , _character.Height/2 ) , new Vector2(sideClearance , _character.Height-sideClearance));
 
 
 
