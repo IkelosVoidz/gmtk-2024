@@ -139,7 +139,12 @@ namespace TarodevController{
                 }
                 else{ //squash return 
                     if (newWidth <= defaultWidth) newWidth = defaultWidth;
-                    Stats.CharacterSize.SetWidth(newWidth);
+
+                    if(newWidth > currentWidth && CanExpandHorizontally(newWidth , newHeight)){
+                        Stats.CharacterSize.SetWidth(newWidth);
+                    }
+                    else if(newWidth <= currentWidth) Stats.CharacterSize.SetWidth(newWidth);
+
                 }
                
                
@@ -153,6 +158,9 @@ namespace TarodevController{
                     if (newHeight <= defaultHeight) newHeight = defaultHeight;
 
                     Stats.CharacterSize.SetHeight(newHeight);
+                     if(newHeight > currentHeight && CanExpandVertically(newWidth , newHeight)){
+                        Stats.CharacterSize.SetHeight(newHeight);
+                    } 
                 }
                 else{ //squash return 
                     if (newHeight >= defaultHeight) newHeight = defaultHeight;
@@ -160,6 +168,7 @@ namespace TarodevController{
                     if(CanExpandVertically(newWidth , newHeight)){
                         Stats.CharacterSize.SetHeight(newHeight);
                     } 
+                    else if(newHeight  <= currentHeight ) Stats.CharacterSize.SetHeight(newHeight);
                 }   
             }
 
