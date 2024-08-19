@@ -22,7 +22,7 @@ MonoBehaviour:
     DefaultWidth: 1.99
     DefaultHeight: 1.99
     Height: 1.99
-    Width: 1.7900002
+    Width: 1.99
     StepHeight: 0.3
     CrouchHeight: 0.8
     RayInset: 0.01
