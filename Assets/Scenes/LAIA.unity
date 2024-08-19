@@ -12887,7 +12887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1835738307}
-  parallexEffect: -1
+  parallexEffect: 0.5
 --- !u!212 &2011884942
 SpriteRenderer:
   m_ObjectHideFlags: 0
