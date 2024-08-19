@@ -12,8 +12,8 @@ public class Parallex : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
-		float temp = (cam.transform.position.x * (1-parallexEffect));
-		float dist = (cam.transform.position.x*parallexEffect);
+		float temp = cam.transform.position.x * (1-parallexEffect);
+		float dist = cam.transform.position.x*parallexEffect;
 
 		transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
 
