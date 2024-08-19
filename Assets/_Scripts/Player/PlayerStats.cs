@@ -138,7 +138,7 @@ namespace TarodevController
         public void Reset(){  
             Height = DefaultHeight;
             Width = DefaultWidth;
-            StepHeight = 0.3f;
+            StepHeight = 0.6f;
             CrouchHeight = 0.8f;
             RayInset = 0.01f;  
         }
