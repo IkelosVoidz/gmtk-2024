@@ -42,7 +42,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void PauseGame()
     {
-        PlayerInputManager.Instance.HandleUiInputSwitch(true);
+        // PlayerInputManager.Instance.HandleUiInputSwitch(true);
         pauseMenu.SetActive(true);
         _options.SetActive(false);
         Time.timeScale = 0f;
@@ -51,7 +51,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        PlayerInputManager.Instance.HandleUiInputSwitch(false);
+        // PlayerInputManager.Instance.HandleUiInputSwitch(false);
         pauseMenu.SetActive(false);
         _options.SetActive(false);
         Time.timeScale = 1f;

@@ -47,7 +47,7 @@ MonoBehaviour:
   _musicSource: {fileID: 856734494580451806, guid: 696d6ee27f6424a45b2695b76c313772, type: 3}
   _effectsSource: {fileID: 3535761322651677573, guid: b58ddc4b798be31439a6fe441ad2e180, type: 3}
   _2DeffectsSource: {fileID: 3535761322651677573, guid: d76af29860b42884d908a585e023ab8a, type: 3}
-  _audioMixer: {fileID: 24100000, guid: d0531aec060c2ee4296e9d7e6d5fa24d, type: 2}
+  _audioMixer: {fileID: 24100000, guid: 9804d9dda8a10934d8c0837f90791d07, type: 2}
   _masterVolume: 1
   _soundFXVolume: 0.5
   _musicVolume: 1
