@@ -4,15 +4,12 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private Slider _sensitivity;
 
     [SerializeField] private GameObject _options;
     [SerializeField] private GameObject _menu;
     [SerializeField] private Slider _masterSlider;
     [SerializeField] private Slider _musicSlider;
     [SerializeField] private Slider _soundFXSlider;
-    [SerializeField] private Slider _ambienceSlider;
-
     public void Start()
     {
         SoundManager.Instance.InitializeVolume(_options);
@@ -41,9 +38,5 @@ public class MainMenu : MonoBehaviour
         _menu.SetActive(true);
     }
 
-    private void OnDisable()
-    {
-        _sensitivity.onValueChanged.RemoveAllListeners();
-    }
 
 }
