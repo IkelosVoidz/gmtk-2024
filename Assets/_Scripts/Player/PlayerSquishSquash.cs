@@ -234,7 +234,6 @@ namespace TarodevController{
         private bool CanExpandHorizontally(float width , float height) {
             
             
-            Physics2D.queriesHitTriggers = false;
             var hitL = Physics2D.OverlapBox(_rb.position + new Vector2(-(width/2) - (_sideClearance/2), height/2 ) , new Vector2(_sideClearance , height - _sideClearance), 0, Stats.CollisionLayers);
             var hitR = Physics2D.OverlapBox(_rb.position + new Vector2((width/2) + (_sideClearance/2) , height/2 ) , new Vector2(_sideClearance , height - _sideClearance), 0, Stats.CollisionLayers);
             
@@ -243,7 +242,7 @@ namespace TarodevController{
 
         private bool CanExpandVertically(float width , float height) {
            
-            Physics2D.queriesHitTriggers = false;
+
 
             var hitT = Physics2D.OverlapBox(_rb.position + new Vector2(0 , height + (_sideClearance/2)) , new Vector2(width - _sideClearance, _sideClearance), 0, Stats.CollisionLayers);
             var hitB = Physics2D.OverlapBox(_rb.position - new Vector2(0 , _sideClearance/2) , new Vector2(width - _sideClearance , _sideClearance), 0, Stats.CollisionLayers);

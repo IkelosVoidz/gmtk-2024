@@ -5,9 +5,8 @@ public class TriggerDoSomething : MonoBehaviour
 {
     public UnityEvent onTriggerDoSomething;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        onTriggerDoSomething?.Invoke();
+    private  void OnTriggerEnter2D(Collider2D other) {
+         onTriggerDoSomething?.Invoke();
 
         BoxCollider[] boxColliders = GetComponents<BoxCollider>();
 
@@ -15,5 +14,7 @@ public class TriggerDoSomething : MonoBehaviour
         {
             if (collider != null) collider.enabled = false;
         }
+
     }
 }
+       
