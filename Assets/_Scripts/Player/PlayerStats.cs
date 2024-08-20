@@ -140,7 +140,7 @@ namespace TarodevController
             Width = DefaultWidth;
             StepHeight = 0.6f;
             CrouchHeight = 0.8f;
-            RayInset = 0.01f;  
+            RayInset = 0.1f;  
         }
 
         public GeneratedCharacterSize GenerateCharacterSize()
